@@ -2,7 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+//routes
 const grantRoutes = require('./routes/routes.js');
+const tagNamesRoute = require('./routes/tagNamesRoute.js');
+const tagRoute = require('./routes/tagRoute.js');
 
 const app = express();
 
@@ -21,8 +24,8 @@ database.once('connected', () => {
     console.log('Database Connected');
 })
 
-app.listen(5000, () => {
-    console.log(`The Server is started at ${5000}`)
+app.listen(process.env.PORT, () => {
+    console.log(`The Server is started at ${process.env.PORT}`)
 })
 
 //setup bodyparser for sending req
@@ -30,4 +33,6 @@ app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 app.use('/grants', grantRoutes);
+app.use('/tagname', tagNamesRoute);
+app.use('/tag', tagRoute);
 
