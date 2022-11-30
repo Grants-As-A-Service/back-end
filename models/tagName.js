@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const tagName = mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        required: true
+    }
 });
 
 const TagName = mongoose.model('TagName', tagName);

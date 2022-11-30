@@ -6,9 +6,20 @@ const tag = mongoose.Schema({
         ref: 'tagName',
         required: true,
     },
-    tagName: String,
-    description: String,
-    quantifier: Number
+    tagName: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    quantifier: {
+        type: Number,
+        require: true,
+        min: 0,
+        max: 10
+    }
 });
 
 const Tag = mongoose.model('Tag', tag);
