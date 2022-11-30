@@ -1,7 +1,7 @@
 const TagNames = require("../models/tagName.js");
 
 const getTagNames = async (req,res) => {
-    console.log('Server: /tagname/getAll endpoint called');
+    console.log('Server: {GET} /tagname/getAll endpoint called');
     try {
         const tagNames = await TagNames.find();
         
