@@ -11,4 +11,18 @@ const getTagNames = async (req,res) => {
     }
 }
 
-module.exports = {getTagNames};
+const createTagName = async (req,res) => {
+    console.log('Server: {POST} /tagname/create endpoint called');
+    try {
+        const tagName = new TagNames({
+            name: req.body.tagName,
+        })
+        const result = await tagName.save();
+        
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(404).json({message: error.message})
+    }
+}
+
+module.exports = {getTagNames, createTagName};
