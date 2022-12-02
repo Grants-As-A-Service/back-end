@@ -60,6 +60,55 @@ app.post("/testRegister", (request, response) => {
     response.sendStatus(200);
 });
 
+app.get("/testProjects", (request, response) => {
+    setTimeout(() => {
+        response.json([
+            {
+                title: "Boats",
+                description: "some boat grant",
+                owner: "Magnus",
+                status: "under review",
+            },
+            {
+                title: "Boats",
+                description: "some boat grant",
+                owner: "Magnus",
+                status: "under review",
+            },
+            {
+                title: "Boats",
+                description: "some boat grant",
+                owner: "Magnus",
+                status: "under review",
+            },
+            {
+                title: "Boats",
+                description: "some boat grant",
+                owner: "Magnus",
+                status: "under review",
+            },
+            {
+                title: "Boats",
+                description: "some boat grant",
+                owner: "Magnus",
+                status: "under review",
+            },
+            {
+                title: "Boats",
+                description: "some boat grant",
+                owner: "Magnus",
+                status: "under review",
+            },
+            {
+                title: "Boats",
+                description: "some boat grant",
+                owner: "Magnus",
+                status: "under review",
+            },
+        ]);
+    }, 1000);
+});
+
 app.use("/grants", grantRoutes);
 app.use("/tagname", tagNamesRoute);
 app.use("/tag", tagRoute);
