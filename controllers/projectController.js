@@ -19,8 +19,8 @@ const createProject = async (req,res) => {
             description: req.body.desc,
             capitalRequired: req.body.capitalRequired,
             annualOperatingExpense: req.body.annualOperatingExpense,
-            startDate: req.body,startDate,
-            endDate: req.body,endDate,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate,
             tags: req.body.tags
         })
         const result = await project.save();

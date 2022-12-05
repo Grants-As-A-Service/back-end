@@ -6,6 +6,7 @@ const cors = require('cors');
 const grantRoutes = require('./routes/routes.js');
 const tagNamesRoute = require('./routes/tagNamesRoute.js');
 const tagRoute = require('./routes/tagRoute.js');
+const businessRoute = require('./routes/businessRoute.js');
 
 const app = express();
 
@@ -35,4 +36,6 @@ app.use(cors());
 app.use('/grants', grantRoutes);
 app.use('/tagname', tagNamesRoute);
 app.use('/tag', tagRoute);
+app.use('/business', businessRoute);
+
 
