@@ -3,9 +3,11 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 //routes
-const grantRoutes = require("./routes/routes.js");
-const tagNamesRoute = require("./routes/tagNamesRoute.js");
-const tagRoute = require("./routes/tagRoute.js");
+
+const grantRoutes = require('./routes/routes.js');
+const tagNamesRoute = require('./routes/tagNamesRoute.js');
+const tagRoute = require('./routes/tagRoute.js');
+const businessRoute = require('./routes/businessRoute.js');
 
 const app = express();
 
@@ -43,6 +45,7 @@ app.use((request, response, next) => {
 });
 
 //setup bodyparser for sending req
+
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 //app.use(cors());
@@ -60,55 +63,10 @@ app.post("/testRegister", (request, response) => {
     response.sendStatus(200);
 });
 
-app.get("/testProjects", (request, response) => {
-    setTimeout(() => {
-        response.json([
-            {
-                title: "Boats",
-                description: "some boat grant",
-                owner: "Magnus",
-                status: "under review",
-            },
-            {
-                title: "Boats",
-                description: "some boat grant",
-                owner: "Magnus",
-                status: "under review",
-            },
-            {
-                title: "Boats",
-                description: "some boat grant",
-                owner: "Magnus",
-                status: "under review",
-            },
-            {
-                title: "Boats",
-                description: "some boat grant",
-                owner: "Magnus",
-                status: "under review",
-            },
-            {
-                title: "Boats",
-                description: "some boat grant",
-                owner: "Magnus",
-                status: "under review",
-            },
-            {
-                title: "Boats",
-                description: "some boat grant",
-                owner: "Magnus",
-                status: "under review",
-            },
-            {
-                title: "Boats",
-                description: "some boat grant",
-                owner: "Magnus",
-                status: "under review",
-            },
-        ]);
-    }, 1000);
-});
 
-app.use("/grants", grantRoutes);
-app.use("/tagname", tagNamesRoute);
-app.use("/tag", tagRoute);
+app.use('/grants', grantRoutes);
+app.use('/tagname', tagNamesRoute);
+app.use('/tag', tagRoute);
+app.use('/business', businessRoute);
+
+
