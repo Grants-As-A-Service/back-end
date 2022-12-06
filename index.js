@@ -4,11 +4,11 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 //routes
 
-const grantRoutes = require('./routes/routes.js');
-const tagNamesRoute = require('./routes/tagNamesRoute.js');
-const tagRoute = require('./routes/tagRoute.js');
-const businessRoute = require('./routes/businessRoute.js');
-const projectRoute = require('./routes/projectRoute.js');
+const grantRoutes = require("./routes/routes.js");
+const tagNamesRoute = require("./routes/tagNamesRoute.js");
+const tagRoute = require("./routes/tagRoute.js");
+const businessRoute = require("./routes/businessRoute.js");
+const projectRoute = require("./routes/projectRoute.js");
 
 const app = express();
 
@@ -27,15 +27,11 @@ database.once("connected", () => {
     console.log("Database Connected");
 });
 
-app.listen(process.env.PORT, () => {
-    console.log(`The Server is started at ${process.env.PORT}`);
-});
-
 app.use((request, response, next) => {
     response.set({
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, content-type, Accept",
         "Access-Control-Expose-Headers": "Set-Fake-Cookie",
     });
     if (request.method === "OPTIONS") {
@@ -47,7 +43,7 @@ app.use((request, response, next) => {
 
 //setup bodyparser for sending req
 
-app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 //app.use(cors());
 
@@ -64,11 +60,12 @@ app.post("/testRegister", (request, response) => {
     response.sendStatus(200);
 });
 
+app.use("/grants", grantRoutes);
+app.use("/tagname", tagNamesRoute);
+app.use("/tag", tagRoute);
+app.use("/business", businessRoute);
+app.use("/project", projectRoute);
 
-app.use('/grants', grantRoutes);
-app.use('/tagname', tagNamesRoute);
-app.use('/tag', tagRoute);
-app.use('/business', businessRoute);
-app.use('/project', projectRoute);
-
-
+app.listen(process.env.PORT, () => {
+    console.log(`The Server is started at ${process.env.PORT}`);
+});
