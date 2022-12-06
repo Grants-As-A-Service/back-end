@@ -15,13 +15,13 @@ const createProject = async (req,res) => {
     console.log('Server: {POST} /project/create endpoint called');
     try {
         const project = new Project({
-            name: req.body.tagNameId,
-            description: req.body.desc,
-            capitalRequired: req.body.capitalRequired,
-            annualOperatingExpense: req.body.annualOperatingExpense,
+            name: req.body.name,
+            description: req.body.description,
+            capex: req.body.capex,
+            annualOpex: req.body.annualOpex,
             startDate: req.body.startDate,
             endDate: req.body.endDate,
-            tags: req.body.tags
+            tags: req.body.impactTags
         })
         const result = await project.save();
         

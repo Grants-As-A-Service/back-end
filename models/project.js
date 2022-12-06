@@ -9,17 +9,13 @@ const project = mongoose.Schema({
         type: String,
         required: true
     },
-    capitalRequired: {
+    capex: {
         type: Number,
-        require: true,
-        min: 0,
-        max: 10
+        require: true
     },
-    annualOperatingExpense: {
+    annualOpex: {
         type: Number,
-        require: true,
-        min: 0,
-        max: 10
+        require: true
     },
     startDate: {
         type: Date,
@@ -31,20 +27,15 @@ const project = mongoose.Schema({
     },
     tags: [
         {
-            tagId: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'tag',
-                required: true,
-            },
-            tagName: {
+            name: {
                 type: String,
                 required: true
             },
-            tagDescription: {
+            description: {
                 type: String,
                 required: true
             },
-            tagQuantifier: {
+            strength: {
                 type: String,
                 required: true
             },

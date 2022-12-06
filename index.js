@@ -1,13 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 //routes
 const grantRoutes = require('./routes/routes.js');
 const tagNamesRoute = require('./routes/tagNamesRoute.js');
 const tagRoute = require('./routes/tagRoute.js');
-const businessRoute = require('./routes/businessRoute.js');
-
+const accountRoute = require('./routes/accountRoute.js');
+const projectRoute = require('./routes/projectRoute');
 const app = express();
 
 //connect to mongo db
@@ -32,10 +33,11 @@ app.listen(process.env.PORT, () => {
 //setup bodyparser for sending req
 app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
+app.use(cookieParser());
 app.use(cors());
 app.use('/grants', grantRoutes);
 app.use('/tagname', tagNamesRoute);
 app.use('/tag', tagRoute);
-app.use('/business', businessRoute);
-
+app.use('/account', accountRoute);
+app.use('/project', projectRoute);
 
