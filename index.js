@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 //routes
+
 const grantRoutes = require('./routes/routes.js');
 const tagNamesRoute = require('./routes/tagNamesRoute.js');
 const tagRoute = require('./routes/tagRoute.js');
@@ -12,19 +13,19 @@ const projectRoute = require('./routes/projectRoute');
 const app = express();
 
 //connect to mongo db
-require('dotenv').config();
-const mongoString = process.env.DATABASE_URL
+require("dotenv").config();
+const mongoString = process.env.DATABASE_URL;
 
 mongoose.connect(mongoString);
 const database = mongoose.connection;
 
-database.on('error', (error) => {
-    console.log(error)
-})
+database.on("error", (error) => {
+    console.log(error);
+});
 
-database.once('connected', () => {
-    console.log('Database Connected');
-})
+database.once("connected", () => {
+    console.log("Database Connected");
+});
 
 app.listen(process.env.PORT, () => {
     console.log(`The Server is started at ${process.env.PORT}`)
