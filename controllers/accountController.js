@@ -13,25 +13,9 @@ const getAccount = async (req,res) => {
 const createAccount = async (req,res) => {
     try {
         const account = new Account({
-            user: {
-                name: req.body.user.name,
-                phone: req.body.user.phone,
-                email: req.body.user.email
-            },
-            business: {
-                name: req.body.business.name,
-                phone: req.body.business.phone,
-                address: req.body.business.address,
-                city: req.body.business.city,
-                province: req.body.business.province,
-                postalCode: req.body.business.postalCode,
-                industry: req.body.business.industry,
-                fte: req.body.business.fte,
-                pte: req.body.business.pte,
-                annualRevenue: req.body.business.annualRevenue,
-                yearOfInception: req.body.business.yearOfInception,
-                projects: req.body.business.projects
-            }
+            name: req.body.user.name,
+            phone: req.body.user.phone,
+            email: req.body.user.email
         })
         const result = await account.save();
         res.status(200).json(result);
