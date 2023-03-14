@@ -2,7 +2,8 @@ const Account = require("../models/account.js");
 
 const getAccount = async (req,res) => {
     try {
-        const account = await Account.findOne();
+        const email = req.body.email;
+        const account = await Account.findOne({'email': email});
         res.status(200).json(account);
     } catch (error) {
         res.status(404).json({message: error.message})

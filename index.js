@@ -10,6 +10,10 @@ const tagNamesRoute = require('./routes/tagNamesRoute.js');
 const tagRoute = require('./routes/tagRoute.js');
 const accountRoute = require('./routes/accountRoute.js');
 const projectRoute = require('./routes/projectRoute');
+const grantRoutes = require('./routes/routes.js');
+const businessRoutes = require('./routes/businessRoute.js');
+const governmentRoutes = require('./routes/governmentRoute.js');
+
 const app = express();
 
 //connect to mongo db
@@ -41,4 +45,6 @@ app.use('/tagname', tagNamesRoute);
 app.use('/tag', tagRoute);
 app.use('/account', accountRoute);
 app.use('/project', projectRoute);
+app.use('/business', businessRoutes);
+app.use('/government', governmentRoutes);
 

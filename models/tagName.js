@@ -7,5 +7,5 @@ const tagName = mongoose.Schema({
     }
 });
 
-const TagName = mongoose.model('tagname', tagName);
+const TagName = mongoose.model('Tagname', tagName);
 module.exports = TagName;

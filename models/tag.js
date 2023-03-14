@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const tag = mongoose.Schema({
     tagNameId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'tagname',
+        ref: 'Tagname',
         required: true,
     },
     tagName: {
@@ -22,5 +22,5 @@ const tag = mongoose.Schema({
     }
 });
 
-const Tag = mongoose.model('tag', tag);
+const Tag = mongoose.model('Tag', tag);
 module.exports = Tag;
